@@ -1,6 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { TouchableOpacity, Text, View, Image, ScrollView } from "react-native";
+import {
+  TouchableOpacity,
+  ImageBackground,
+  Text,
+  View,
+  Image,
+  ScrollView,
+} from "react-native";
 
 import globalStyles from "../styles/globalStyles";
 import homeStyles from "../styles/homeStyles";
@@ -26,7 +33,11 @@ function HomeScreen() {
         style={homeStyles.image}
         source={require("../assets/images/mathav.jpg")}
       />
-      <ScrollView style={homeStyles.scrollView} horizontal>
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        style={homeStyles.scrollView}
+        horizontal
+      >
         {day.map((item) => {
           const dayofWeek = getDay(item + 1);
           return (
@@ -47,6 +58,34 @@ function HomeScreen() {
           );
         })}
       </ScrollView>
+      <View style={homeStyles.holder2}>
+        <ImageBackground
+          source={require("../assets/bg1.png")}
+          resizeMode="cover"
+          style={homeStyles.innerBG}
+        >
+          <Text
+            style={{
+              fontSize: 22,
+              textAlign: "center",
+              fontFamily: "MalayalamBold",
+              color: "#282A34",
+            }}
+          >
+            ഒന്നാം തീയതി
+          </Text>
+          <Text
+            style={{
+              fontSize: 18,
+              textAlign: "center",
+              fontFamily: "Malayalam",
+              color: "rgba(40, 42, 52, .5)",
+            }}
+          >
+            പരിശുദ്ധ കന്യകയോടുള്ള ഭക്തിയുടെ ആവശ്യകത
+          </Text>
+        </ImageBackground>
+      </View>
     </View>
   );
 }

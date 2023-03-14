@@ -9,6 +9,7 @@ export default homeStyles = StyleSheet.create({
 
     flex: 0,
     flexGrow: 0,
+    marginVertical: 10,
   },
   day: {
     height: 100,
@@ -17,8 +18,10 @@ export default homeStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     margin: 2,
+    width: Dimensions.get("window").width * (1 / 5),
   },
   daySelected: {
+    width: Dimensions.get("window").width * (1 / 5),
     backgroundColor: "rgba(200, 197, 187, .4)",
     margin: 2,
     height: 100,
@@ -49,6 +52,8 @@ export default homeStyles = StyleSheet.create({
     resizeMode: "cover",
     borderRadius: 1000,
     marginTop: 20,
+    alignItems: "center",
+    justifyContent: "center",
     width: Dimensions.get("window").width * 0.6,
   },
   head: {
@@ -56,5 +61,22 @@ export default homeStyles = StyleSheet.create({
     fontWeight: 600,
     fontSize: 35,
     marginTop: 20,
+  },
+  holder2: {
+    flexGrow: 1,
+    width: Dimensions.get("window").width,
+    marginTop: 8,
+    position: "relative",
+    alignItems: "center",
+    flexDirection: "column",
+    justifyContent: "center",
+    borderTopLeftRadius: 50,
+    borderTopRightRadius: 50,
+    overflow: "hidden",
+  },
+  innerBG: {
+    flex: 1,
+    justifyContent: "center",
+    width: Dimensions.get("window").width,
   },
 });
