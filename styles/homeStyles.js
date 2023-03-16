@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
-
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 export default homeStyles = StyleSheet.create({
   container: {},
   scrollView: {
@@ -78,5 +78,45 @@ export default homeStyles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     width: Dimensions.get("window").width,
+  },
+  daySub: {
+    fontSize: RFValue(16),
+    textAlign: "center",
+    fontFamily: "Malayalam",
+    color: "rgba(40, 42, 52, .5)",
+  },
+  mlDate: {
+    fontSize: RFValue(20),
+    textAlign: "center",
+    fontFamily: "MalayalamBold",
+    color: "#282A34",
+  },
+  sukruthjapam: {
+    fontSize: RFValue(16),
+    marginHorizontal: 5,
+    marginTop: 15,
+    fontStyle: "italic",
+    textAlign: "center",
+    fontFamily: "Malayalam",
+    color: "#282A34",
+  },
+  readBtn: {
+    width: Dimensions.get("window").width * 0.6,
+
+    alignSelf: "center",
+    justifyContent: "center",
+    padding: 10,
+    alignItems: "center",
+    borderRadius: 1000,
+
+    backgroundColor: "#282A34",
+    marginTop: 14,
+  },
+  readBtnText: {
+    fontSize: RFValue(22),
+    letterSpacing: 2,
+    fontFamily: "Oleana",
+    color: "#fff",
+    fontWeight: "400",
   },
 });

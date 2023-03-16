@@ -11,7 +11,7 @@ import {
 
 import globalStyles from "../styles/globalStyles";
 import homeStyles from "../styles/homeStyles";
-function HomeScreen() {
+function HomeScreen({ navigation }) {
   const [seleted, setSelected] = useState(5);
   const [day, setDay] = useState(Array.from(Array(31).keys()));
 
@@ -64,26 +64,19 @@ function HomeScreen() {
           resizeMode="cover"
           style={homeStyles.innerBG}
         >
-          <Text
-            style={{
-              fontSize: 22,
-              textAlign: "center",
-              fontFamily: "MalayalamBold",
-              color: "#282A34",
-            }}
-          >
-            ഒന്നാം തീയതി
-          </Text>
-          <Text
-            style={{
-              fontSize: 18,
-              textAlign: "center",
-              fontFamily: "Malayalam",
-              color: "rgba(40, 42, 52, .5)",
-            }}
-          >
+          <Text style={homeStyles.mlDate}>ഒന്നാം തീയതി</Text>
+          <Text style={homeStyles.daySub}>
             പരിശുദ്ധ കന്യകയോടുള്ള ഭക്തിയുടെ ആവശ്യകത
           </Text>
+          <Text style={homeStyles.sukruthjapam}>
+            ക്രിസ്ത്യാനികളുടെ സഹായമായ മറിയമേ, ഞങ്ങള്‍ക്കു വേണ്ടി അപേക്ഷിക്കണമേ.
+          </Text>
+          <TouchableOpacity
+            onPress={() => navigation.push("prayer")}
+            style={homeStyles.readBtn}
+          >
+            <Text style={homeStyles.readBtnText}>Read Prayer </Text>
+          </TouchableOpacity>
         </ImageBackground>
       </View>
     </View>

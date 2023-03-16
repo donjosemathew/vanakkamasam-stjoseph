@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/Home";
 
 import Intro from "./screens/Intro";
+import PrayerScreen from "./screens/Prayer";
 const Stack = createNativeStackNavigator();
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       >
         <Stack.Screen name="intro" component={Intro} />
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="prayer" component={PrayerScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
