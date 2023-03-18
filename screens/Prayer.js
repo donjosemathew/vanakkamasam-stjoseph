@@ -11,7 +11,8 @@ import {
   Dimensions,
   StatusBar as SB,
 } from "react-native";
-
+import BottomSheetComponent from "../Bottomsheet/BottomSheet";
+import { FAB } from "@rneui/themed";
 import globalStyles from "../styles/globalStyles";
 import homeStyles from "../styles/homeStyles";
 import prayerStyles from "../styles/prayerStyles";
@@ -247,16 +248,13 @@ function PrayerScreen() {
       <StatusBar backgroundColor="transparent" />
       <Image style={globalStyles.bg} source={require("../assets/bg1.png")} />
       <Animated.View
-        style={{
-          height: topbarheight,
-          position: "absolute",
-          backgroundColor: "white",
-          width: "100%",
-          opacity: opacity,
-          zIndex: 10,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+        style={[
+          {
+            height: topbarheight,
+            opacity: opacity,
+          },
+          prayerStyles.topBar,
+        ]}
       ></Animated.View>
 
       <Animated.View
@@ -335,6 +333,7 @@ function PrayerScreen() {
         <Text style={[prayerStyles.subHead]}>സുകൃതജപം</Text>
         <Text style={[prayerStyles.text]}>{data.sukruthajapam}</Text>
       </Animated.ScrollView>
+      <BottomSheetComponent />
     </View>
   );
 }
