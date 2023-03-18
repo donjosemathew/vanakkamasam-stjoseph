@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   TouchableOpacity,
   ImageBackground,
@@ -7,6 +7,9 @@ import {
   View,
   Image,
   ScrollView,
+  Animated,
+  Dimensions,
+  StatusBar as SB,
 } from "react-native";
 
 import globalStyles from "../styles/globalStyles";
@@ -207,23 +210,103 @@ function PrayerScreen() {
     sukruthajapam:
       "ക്രിസ്ത്യാനികളുടെ സഹായമായ മറിയമേ, ഞങ്ങള്‍ക്കു വേണ്ടി അപേക്ഷിക്കണമേ.",
   };
+  const statusBar = SB.currentHeight;
+
+  const devHeight = Dimensions.get("window").height;
+  const scalePercentage = 0.25;
+  const imageHeight = devHeight * 0.3;
+  const imageResized = imageHeight * scalePercentage;
+  const imageMargin = SB.currentHeight + 10;
+  const imagePadding = 20;
+  const imageViewHeight = imageHeight + imagePadding + imageMargin;
+  const topbarheight = statusBar + imageResized + imagePadding / 2;
+  const scrolling = useRef(new Animated.Value(0)).current;
+
+  const scale = scrolling.interpolate({
+    inputRange: [0, imageHeight],
+    outputRange: [1, scalePercentage],
+    extrapolate: "clamp",
+  });
+  const opacity = scrolling.interpolate({
+    inputRange: [0, imageHeight],
+    outputRange: [0, 1],
+    extrapolate: "clamp",
+  });
+
+  const translationY = scrolling.interpolate({
+    inputRange: [0, imageHeight],
+    outputRange: [0, -topbarheight],
+    extrapolate: "clamp",
+  });
+  useEffect(() => {
+    console.log(scrolling);
+  }, [scrolling]);
 
   return (
     <View style={globalStyles.parent}>
       <StatusBar backgroundColor="transparent" />
       <Image style={globalStyles.bg} source={require("../assets/bg1.png")} />
-      <ScrollView
-        onScroll={(e) => {
-          const scrolling = e.nativeEvent.contentOffset.y;
-          console.log(scrolling);
+      <Animated.View
+        style={{
+          height: topbarheight,
+          position: "absolute",
+          backgroundColor: "white",
+          width: "100%",
+          opacity: opacity,
+          zIndex: 10,
+          alignItems: "center",
+          justifyContent: "center",
         }}
-        contentContainerStyle={globalStyles.scrollView}
+      ></Animated.View>
+
+      <Animated.View
+        style={{
+          position: "absolute",
+          padding: imagePadding,
+          zIndex: 20,
+          transform: [
+            {
+              translateY: translationY,
+            },
+            {
+              scale: scale,
+            },
+          ],
+        }}
       >
-        <Text style={homeStyles.head}>Vanakkamasam</Text>
         <Image
-          style={homeStyles.image}
+          style={[
+            homeStyles.image,
+            {
+              marginTop: imageMargin,
+            },
+          ]}
           source={require("../assets/images/mathav.jpg")}
         />
+      </Animated.View>
+      <Animated.ScrollView
+        onScroll={Animated.event(
+          [
+            {
+              nativeEvent: {
+                contentOffset: {
+                  y: scrolling,
+                },
+              },
+            },
+          ],
+          {
+            useNativeDriver: true,
+          }
+        )}
+        contentContainerStyle={[
+          globalStyles.scrollView,
+          {
+            marginTop: imageViewHeight,
+            paddingBottom: imageViewHeight + 100,
+          },
+        ]}
+      >
         <Text style={[homeStyles.mlDate, prayerStyles.dateNum]}>
           ഒന്നാം തീയതി
         </Text>
@@ -251,7 +334,7 @@ function PrayerScreen() {
         <Text style={[prayerStyles.text]}>{data.apeksha}</Text>
         <Text style={[prayerStyles.subHead]}>സുകൃതജപം</Text>
         <Text style={[prayerStyles.text]}>{data.sukruthajapam}</Text>
-      </ScrollView>
+      </Animated.ScrollView>
     </View>
   );
 }
