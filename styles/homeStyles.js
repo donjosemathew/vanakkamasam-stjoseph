@@ -1,6 +1,8 @@
 import { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+const devWidth = Dimensions.get("window").width;
+const devHeight = Dimensions.get("window").height;
 export default homeStyles = StyleSheet.create({
   container: {},
   scrollView: {
@@ -18,10 +20,10 @@ export default homeStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     margin: 2,
-    width: Dimensions.get("window").width * (1 / 5),
+    width: devWidth * (1 / 5),
   },
   daySelected: {
-    width: Dimensions.get("window").width * (1 / 5),
+    width: devWidth * (1 / 5),
     backgroundColor: "rgba(200, 197, 187, .4)",
     margin: 2,
     height: 100,
@@ -48,13 +50,13 @@ export default homeStyles = StyleSheet.create({
     color: "#E46168",
   },
   image: {
-    height: Dimensions.get("window").height * 0.3,
+    height: devHeight * 0.3,
     resizeMode: "cover",
     borderRadius: 1000,
     marginTop: 20,
     alignItems: "center",
     justifyContent: "center",
-    width: Dimensions.get("window").width * 0.6,
+    width: devWidth * 0.6,
   },
   head: {
     fontFamily: "Oleana",
@@ -64,7 +66,7 @@ export default homeStyles = StyleSheet.create({
   },
   holder2: {
     flexGrow: 1,
-    width: Dimensions.get("window").width,
+    width: devWidth,
     marginTop: 8,
     position: "relative",
     alignItems: "center",
@@ -77,7 +79,7 @@ export default homeStyles = StyleSheet.create({
   innerBG: {
     flex: 1,
     justifyContent: "center",
-    width: Dimensions.get("window").width,
+    width: devWidth,
   },
   daySub: {
     fontSize: RFValue(16),
@@ -101,7 +103,7 @@ export default homeStyles = StyleSheet.create({
     color: "#282A34",
   },
   readBtn: {
-    width: Dimensions.get("window").width * 0.6,
+    width: devWidth * 0.6,
 
     alignSelf: "center",
     justifyContent: "center",

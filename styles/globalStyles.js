@@ -16,4 +16,9 @@ export default styles = StyleSheet.create({
     left: 0,
     zIndex: -1,
   },
+  scrollView: {
+    flexGrow: 1,
+    padding: 12,
+    alignItems: "center",
+  },
 });
