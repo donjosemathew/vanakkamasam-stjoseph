@@ -46,10 +46,14 @@ export default prayerStyles = StyleSheet.create({
   },
   btmSheet: {
     backgroundColor: "#282A34",
-    width: "100%",
-    height: "100%",
+
     borderRadius: 15,
     padding: 16,
+    position: "absolute",
+    bottom: 0,
+
+    width: "95%",
+    margin: 20,
   },
   textitem: {
     color: "#fff",
@@ -81,5 +85,20 @@ export default prayerStyles = StyleSheet.create({
     alignItems: "stretch",
     justifyContent: "center",
     width: "60%",
+  },
+  FAB: {
+    backgroundColor: "#fff",
+    elevation: 5,
+    width: 62,
+    height: 62,
+    shadowOpacity: 0.3,
+
+    shadowColor: "rgba(39, 42, 52, 0.51)",
+    borderRadius: 65 / 2,
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    right: 15,
+    bottom: 15,
   },
 });

@@ -16,7 +16,12 @@ import { FAB } from "@rneui/themed";
 import globalStyles from "../styles/globalStyles";
 import homeStyles from "../styles/homeStyles";
 import prayerStyles from "../styles/prayerStyles";
+import { RFValue } from "react-native-responsive-fontsize";
 function PrayerScreen() {
+  //////////////////////
+  const [fontSize, SetFontSize] = useState(16);
+  const [textAlign, SettextAlign] = useState("justify");
+  //////////
   data = {
     text: `പരിശുദ്ധ കന്യകാമറിയത്തിന് ക്രിസ്തീയ ജീവിതത്തില്‍ അതുല്യമായ സ്ഥാനമാണുള്ളത്. ദൈവമാതാവെന്ന സ്ഥാനം മൂലം അവള്‍ സകല മനുഷ്യരുടെയും മാതാവാണ്. സഹരക്ഷക എന്ന നിലയില്‍ ക്രിസ്തുവിന്‍റെ രക്ഷാകര പ്രവൃത്തിയില്‍ മറ്റാരെക്കാളുമധികം പങ്കുചേർന്ന് നമ്മെ സഹായിക്കുന്നു. നമ്മുടെ ആദ്ധ്യാത്മിക ജനനിയെന്ന പദവി മൂലം സകല പ്രസാദവരങ്ങളുടെയും ഉറവിടമായി, മറിയം നിലകൊള്ളുന്നു. നിത്യരക്ഷയ്ക്കുള്ള മാറ്റമില്ലാത്ത അടയാളമാണ് ദൈവമാതാവിനോടുള്ള ഭക്തിയെന്ന് എല്ലാ ദൈവശാസ്ത്രജ്ഞന്‍മാരും ഒരേ സ്വരത്തില്‍ അഭിപ്രായപ്പെടുന്നു.
 
@@ -283,6 +288,7 @@ function PrayerScreen() {
         />
       </Animated.View>
       <Animated.ScrollView
+        onStartShouldSetResponder={() => true}
         onScroll={Animated.event(
           [
             {
@@ -305,35 +311,132 @@ function PrayerScreen() {
           },
         ]}
       >
-        <Text style={[homeStyles.mlDate, prayerStyles.dateNum]}>
+        <Text
+          style={[
+            homeStyles.mlDate,
+            prayerStyles.dateNum,
+            ,
+            { fontSize: RFValue(fontSize + 4) },
+          ]}
+        >
           ഒന്നാം തീയതി
         </Text>
-        <Text style={[homeStyles.daySub, prayerStyles.subtext]}>
+        <Text
+          style={[
+            homeStyles.daySub,
+            prayerStyles.subtext,
+            { fontSize: RFValue(fontSize + 1) },
+          ]}
+        >
           പരിശുദ്ധ കന്യകയോടുള്ള ഭക്തിയുടെ ആവശ്യകത
         </Text>
-        <Text style={[prayerStyles.text]}>{data.text}</Text>
-        <Text style={[prayerStyles.subHead]}>സംഭവം</Text>
-        <Text style={[prayerStyles.text]}>{data.sambavam}</Text>
-        <Text style={[prayerStyles.subHead]}>പ്രാര്‍ത്ഥന</Text>
-        <Text style={[prayerStyles.text]}>{data.prarthana}</Text>
-        <Text style={[prayerStyles.subHead]}>
+        <Text
+          style={[
+            prayerStyles.text,
+            { fontSize: RFValue(fontSize), textAlign: textAlign },
+          ]}
+        >
+          {data.text}
+        </Text>
+        <Text
+          style={[prayerStyles.subHead, { fontSize: RFValue(fontSize + 2) }]}
+        >
+          സംഭവം
+        </Text>
+        <Text
+          style={[
+            prayerStyles.text,
+            { fontSize: RFValue(fontSize), textAlign: textAlign },
+          ]}
+        >
+          {data.sambavam}
+        </Text>
+        <Text
+          style={[prayerStyles.subHead, { fontSize: RFValue(fontSize + 2) }]}
+        >
+          പ്രാര്‍ത്ഥന
+        </Text>
+        <Text
+          style={[
+            prayerStyles.text,
+            { fontSize: RFValue(fontSize), textAlign: textAlign },
+          ]}
+        >
+          {data.prarthana}
+        </Text>
+        <Text
+          style={[prayerStyles.subHead, { fontSize: RFValue(fontSize + 2) }]}
+        >
           വിശുദ്ധ ബര്‍ണ്ണര്‍ദോസ് ദൈവമാതാവിനെ നോക്കി പ്രാര്‍ത്ഥിച്ച ജപം
         </Text>
-        <Text style={[prayerStyles.text]}>{data.ethrayum}</Text>
-        <Text style={[prayerStyles.subHead]}>ദൈവമാതാവിന്റെ ലുത്തിനിയ</Text>
-        <Text style={[prayerStyles.text, prayerStyles.luthiniya]}>
+        <Text
+          style={[
+            prayerStyles.text,
+            { fontSize: RFValue(fontSize), textAlign: textAlign },
+          ]}
+        >
+          {data.ethrayum}
+        </Text>
+        <Text
+          style={[prayerStyles.subHead, { fontSize: RFValue(fontSize + 2) }]}
+        >
+          ദൈവമാതാവിന്റെ ലുത്തിനിയ
+        </Text>
+        <Text
+          style={[
+            prayerStyles.text,
+            prayerStyles.luthiniya,
+            { fontSize: RFValue(fontSize) },
+          ]}
+        >
           {data.luthiniya}
         </Text>
-        <Text style={[prayerStyles.subHead]}>ജപം</Text>
-        <Text style={[prayerStyles.text]}>{data.japam}</Text>
-        <Text style={[prayerStyles.subHead]}>
+        <Text
+          style={[prayerStyles.subHead, { fontSize: RFValue(fontSize + 2) }]}
+        >
+          ജപം
+        </Text>
+        <Text
+          style={[
+            prayerStyles.text,
+            { fontSize: RFValue(fontSize), textAlign: textAlign },
+          ]}
+        >
+          {data.japam}
+        </Text>
+        <Text
+          style={[prayerStyles.subHead, { fontSize: RFValue(fontSize + 2) }]}
+        >
           പരിശുദ്ധ ദൈവമാതാവിനോടുള്ള അപേക്ഷ
         </Text>
-        <Text style={[prayerStyles.text]}>{data.apeksha}</Text>
-        <Text style={[prayerStyles.subHead]}>സുകൃതജപം</Text>
-        <Text style={[prayerStyles.text]}>{data.sukruthajapam}</Text>
+        <Text
+          style={[
+            prayerStyles.text,
+            { fontSize: RFValue(fontSize), textAlign: textAlign },
+          ]}
+        >
+          {data.apeksha}
+        </Text>
+        <Text
+          style={[prayerStyles.subHead, { fontSize: RFValue(fontSize + 2) }]}
+        >
+          സുകൃതജപം
+        </Text>
+        <Text
+          style={[
+            prayerStyles.text,
+            { fontSize: RFValue(fontSize), textAlign: textAlign },
+          ]}
+        >
+          {data.sukruthajapam}
+        </Text>
       </Animated.ScrollView>
-      <BottomSheetComponent />
+      <BottomSheetComponent
+        textAlign={textAlign}
+        SettextAlign={SettextAlign}
+        fontSize={fontSize}
+        SetFontSize={SetFontSize}
+      />
     </View>
   );
 }
