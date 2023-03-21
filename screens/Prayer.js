@@ -17,6 +17,7 @@ import globalStyles from "../styles/globalStyles";
 import homeStyles from "../styles/homeStyles";
 import prayerStyles from "../styles/prayerStyles";
 import { RFValue } from "react-native-responsive-fontsize";
+import { SharedElement } from "react-navigation-shared-element";
 function PrayerScreen() {
   //////////////////////
   const [fontSize, SetFontSize] = useState(16);
@@ -251,7 +252,9 @@ function PrayerScreen() {
   return (
     <View style={globalStyles.parent}>
       <StatusBar backgroundColor="transparent" />
+
       <Image style={globalStyles.bg} source={require("../assets/bg1.png")} />
+
       <Animated.View
         style={[
           {
@@ -277,15 +280,17 @@ function PrayerScreen() {
           ],
         }}
       >
-        <Image
-          style={[
-            homeStyles.image,
-            {
-              marginTop: imageMargin,
-            },
-          ]}
-          source={require("../assets/images/mathav.jpg")}
-        />
+        <SharedElement id="mathav">
+          <Image
+            style={[
+              homeStyles.image,
+              {
+                marginTop: imageMargin,
+              },
+            ]}
+            source={require("../assets/images/mathav.jpg")}
+          />
+        </SharedElement>
       </Animated.View>
       <Animated.ScrollView
         onStartShouldSetResponder={() => true}
@@ -321,6 +326,7 @@ function PrayerScreen() {
         >
           ഒന്നാം തീയതി
         </Text>
+
         <Text
           style={[
             homeStyles.daySub,
@@ -330,6 +336,7 @@ function PrayerScreen() {
         >
           പരിശുദ്ധ കന്യകയോടുള്ള ഭക്തിയുടെ ആവശ്യകത
         </Text>
+
         <Text
           style={[
             prayerStyles.text,

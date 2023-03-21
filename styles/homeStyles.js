@@ -92,6 +92,7 @@ export default homeStyles = StyleSheet.create({
     textAlign: "center",
     fontFamily: "MalayalamBold",
     color: "#282A34",
+    width: "100%",
   },
   sukruthjapam: {
     fontSize: RFValue(16),

@@ -8,6 +8,7 @@ import {
   Image,
   ScrollView,
 } from "react-native";
+import { SharedElement } from "react-navigation-shared-element";
 
 import globalStyles from "../styles/globalStyles";
 import homeStyles from "../styles/homeStyles";
@@ -27,12 +28,16 @@ function HomeScreen({ navigation }) {
   return (
     <View style={globalStyles.parent}>
       <StatusBar backgroundColor="transparent" />
-      <Text style={homeStyles.head}>Vanakkamasam</Text>
+      <SharedElement id="vtext">
+        <Text style={homeStyles.head}>Vanakkamasam</Text>
+      </SharedElement>
       <Image style={globalStyles.bg} source={require("../assets/bg-2.png")} />
-      <Image
-        style={homeStyles.image}
-        source={require("../assets/images/mathav.jpg")}
-      />
+      <SharedElement id="mathav">
+        <Image
+          style={homeStyles.image}
+          source={require("../assets/images/mathav.jpg")}
+        />
+      </SharedElement>
       <ScrollView
         showsHorizontalScrollIndicator={false}
         style={homeStyles.scrollView}
@@ -65,9 +70,11 @@ function HomeScreen({ navigation }) {
           style={homeStyles.innerBG}
         >
           <Text style={homeStyles.mlDate}>ഒന്നാം തീയതി</Text>
+
           <Text style={homeStyles.daySub}>
             പരിശുദ്ധ കന്യകയോടുള്ള ഭക്തിയുടെ ആവശ്യകത
           </Text>
+
           <Text style={homeStyles.sukruthjapam}>
             ക്രിസ്ത്യാനികളുടെ സഹായമായ മറിയമേ, ഞങ്ങള്‍ക്കു വേണ്ടി അപേക്ഷിക്കണമേ.
           </Text>

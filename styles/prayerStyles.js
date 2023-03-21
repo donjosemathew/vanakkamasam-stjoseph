@@ -6,6 +6,7 @@ export default prayerStyles = StyleSheet.create({
   dateNum: {
     marginTop: 10,
     fontSize: RFValue(20),
+    width: "100%",
   },
   subtext: {
     marginTop: 6,
