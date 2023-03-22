@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   TouchableOpacity,
   ImageBackground,
@@ -9,11 +9,13 @@ import {
   ScrollView,
 } from "react-native";
 import { SharedElement } from "react-navigation-shared-element";
+import { datatext } from "../data/data";
 
 import globalStyles from "../styles/globalStyles";
 import homeStyles from "../styles/homeStyles";
 function HomeScreen({ navigation }) {
-  const [seleted, setSelected] = useState(5);
+  const [seleted, setSelected] = useState(0);
+
   const [day, setDay] = useState(Array.from(Array(31).keys()));
 
   const days = ["SUN", "MON", "TUE", "WED", "THU", "SAT", "FRI"];
@@ -24,7 +26,28 @@ function HomeScreen({ navigation }) {
 
     return day;
   };
+  ///////////////////////
+  ///////////Day
+  const currentDate = new Date();
+  const month = currentDate.getMonth();
+  const dayMonth = currentDate.getUTCDate();
 
+  useEffect(() => {
+    if (currentDate) {
+      if (month == 4) {
+        setSelected(dayMonth);
+      } else {
+        setSelected(0);
+      }
+    }
+  }, []);
+  /////////////////
+  ////
+  const prayerPage = () => {
+    navigation.push("prayer", {
+      day: seleted,
+    });
+  };
   return (
     <View style={globalStyles.parent}>
       <StatusBar backgroundColor="transparent" />
@@ -43,11 +66,13 @@ function HomeScreen({ navigation }) {
         style={homeStyles.scrollView}
         horizontal
       >
-        {day.map((item) => {
+        {day.map((item, i) => {
           const dayofWeek = getDay(item + 1);
           return (
             <TouchableOpacity
-              onPress={() => setSelected(item)}
+              onPress={() => {
+                setSelected(item);
+              }}
               key={item}
               style={seleted == item ? homeStyles.daySelected : homeStyles.day}
             >
@@ -69,19 +94,14 @@ function HomeScreen({ navigation }) {
           resizeMode="cover"
           style={homeStyles.innerBG}
         >
-          <Text style={homeStyles.mlDate}>ഒന്നാം തീയതി</Text>
+          <Text style={homeStyles.mlDate}>{datatext[seleted].daytext}</Text>
 
-          <Text style={homeStyles.daySub}>
-            പരിശുദ്ധ കന്യകയോടുള്ള ഭക്തിയുടെ ആവശ്യകത
-          </Text>
+          <Text style={homeStyles.daySub}>{datatext[seleted].subject}</Text>
 
           <Text style={homeStyles.sukruthjapam}>
-            ക്രിസ്ത്യാനികളുടെ സഹായമായ മറിയമേ, ഞങ്ങള്‍ക്കു വേണ്ടി അപേക്ഷിക്കണമേ.
+            {datatext[seleted].sukruthajapam}
           </Text>
-          <TouchableOpacity
-            onPress={() => navigation.push("prayer")}
-            style={homeStyles.readBtn}
-          >
+          <TouchableOpacity onPress={prayerPage} style={homeStyles.readBtn}>
             <Text style={homeStyles.readBtnText}>Read Prayer </Text>
           </TouchableOpacity>
         </ImageBackground>

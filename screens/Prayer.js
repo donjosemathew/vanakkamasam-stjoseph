@@ -18,7 +18,8 @@ import homeStyles from "../styles/homeStyles";
 import prayerStyles from "../styles/prayerStyles";
 import { RFValue } from "react-native-responsive-fontsize";
 import { SharedElement } from "react-navigation-shared-element";
-function PrayerScreen() {
+import { datatext } from "../data/data";
+function PrayerScreen({ route, navigation }) {
   //////////////////////
   const [fontSize, SetFontSize] = useState(16);
   const [textAlign, SettextAlign] = useState("justify");
@@ -245,9 +246,10 @@ function PrayerScreen() {
     outputRange: [0, -topbarheight],
     extrapolate: "clamp",
   });
-  useEffect(() => {
-    console.log(scrolling);
-  }, [scrolling]);
+  ///////////
+  ////
+  const { day } = route.params;
+  console.log(day);
 
   return (
     <View style={globalStyles.parent}>
@@ -324,7 +326,7 @@ function PrayerScreen() {
             { fontSize: RFValue(fontSize + 4) },
           ]}
         >
-          ഒന്നാം തീയതി
+          {datatext[day].daytext}
         </Text>
 
         <Text
@@ -334,7 +336,7 @@ function PrayerScreen() {
             { fontSize: RFValue(fontSize + 1) },
           ]}
         >
-          പരിശുദ്ധ കന്യകയോടുള്ള ഭക്തിയുടെ ആവശ്യകത
+          {datatext[day].subject}
         </Text>
 
         <Text
@@ -343,7 +345,7 @@ function PrayerScreen() {
             { fontSize: RFValue(fontSize), textAlign: textAlign },
           ]}
         >
-          {data.text}
+          {datatext[day].intro}
         </Text>
         <Text
           style={[prayerStyles.subHead, { fontSize: RFValue(fontSize + 2) }]}
@@ -356,7 +358,7 @@ function PrayerScreen() {
             { fontSize: RFValue(fontSize), textAlign: textAlign },
           ]}
         >
-          {data.sambavam}
+          {datatext[day].incident}
         </Text>
         <Text
           style={[prayerStyles.subHead, { fontSize: RFValue(fontSize + 2) }]}
@@ -369,7 +371,7 @@ function PrayerScreen() {
             { fontSize: RFValue(fontSize), textAlign: textAlign },
           ]}
         >
-          {data.prarthana}
+          {datatext[day].prayer}
         </Text>
         <Text
           style={[prayerStyles.subHead, { fontSize: RFValue(fontSize + 2) }]}
@@ -435,7 +437,7 @@ function PrayerScreen() {
             { fontSize: RFValue(fontSize), textAlign: textAlign },
           ]}
         >
-          {data.sukruthajapam}
+          {datatext[day].sukruthajapam}
         </Text>
       </Animated.ScrollView>
       <BottomSheetComponent
