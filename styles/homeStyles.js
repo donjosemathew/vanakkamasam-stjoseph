@@ -58,11 +58,18 @@ export default homeStyles = StyleSheet.create({
     justifyContent: "center",
     width: devWidth * 0.6,
   },
+  topContainer: {
+    paddingHorizontal: 20,
+    marginTop: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+  },
   head: {
     fontFamily: "Oleana",
     fontWeight: 600,
     fontSize: 35,
-    marginTop: 20,
   },
   holder2: {
     flexGrow: 1,

@@ -439,6 +439,26 @@ function PrayerScreen({ route, navigation }) {
         >
           {datatext[day].sukruthajapam}
         </Text>
+        {day == 30 && (
+          <>
+            <Text
+              style={[
+                prayerStyles.subHead,
+                { fontSize: RFValue(fontSize + 2) },
+              ]}
+            >
+              വിമലഹൃദയ പ്രതിഷ്ഠ
+            </Text>
+            <Text
+              style={[
+                prayerStyles.text,
+                { fontSize: RFValue(fontSize), textAlign: textAlign },
+              ]}
+            >
+              {datatext[day].lastprayer}
+            </Text>
+          </>
+        )}
       </Animated.ScrollView>
       <BottomSheetComponent
         textAlign={textAlign}
