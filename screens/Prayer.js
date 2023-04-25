@@ -19,6 +19,7 @@ import prayerStyles from "../styles/prayerStyles";
 import { RFValue } from "react-native-responsive-fontsize";
 import { SharedElement } from "react-navigation-shared-element";
 import { datatext } from "../data/data";
+
 function PrayerScreen({ route, navigation }) {
   //////////////////////
   const [fontSize, SetFontSize] = useState(16);
@@ -460,6 +461,13 @@ function PrayerScreen({ route, navigation }) {
           </>
         )}
       </Animated.ScrollView>
+      {/* <BannerAd
+        unitId={adUnitId}
+        size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+        requestOptions={{
+          requestNonPersonalizedAdsOnly: true,
+        }}
+      /> */}
       <BottomSheetComponent
         textAlign={textAlign}
         SettextAlign={SettextAlign}

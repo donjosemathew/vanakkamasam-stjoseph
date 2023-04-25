@@ -9,7 +9,7 @@ export default styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
-    backgroundColor: "red",
+    backgroundColor: "white",
     paddingTop: StatusBar.currentHeight,
   },
   bg: {

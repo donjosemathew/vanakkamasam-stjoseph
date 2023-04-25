@@ -8,7 +8,7 @@ import {
   Animated,
   Easing,
 } from "react-native";
-
+import { A } from "@expo/html-elements";
 import homeStyles from "../styles/homeStyles";
 import prayerStyles from "../styles/prayerStyles";
 import { Slider } from "react-native-elements";
@@ -174,6 +174,22 @@ function BottomSheetComponent({
               />
             </TouchableOpacity>
           </View>
+          <A
+            style={{
+              padding: 10,
+              width: "100%",
+              borderRadius: 5,
+              marginBottom: 10,
+              marginTop: 10,
+
+              backgroundColor: "rgba(200, 197, 187, .2)",
+            }}
+            href="https://www.buymeacoffee.com/donjosemathew"
+          >
+            <Text style={{ color: "white", fontSize: RFValue(15) }}>
+              Support Me
+            </Text>
+          </A>
         </Animated.View>
       )}
       {!visible && (

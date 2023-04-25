@@ -5,6 +5,7 @@ import globalStyles from "../styles/globalStyles";
 import { StatusBar } from "expo-status-bar";
 import homeStyles from "../styles/homeStyles";
 import { SharedElement } from "react-navigation-shared-element";
+
 function Intro({ navigation }) {
   const [isLoaded] = useFonts({
     Malayalam: require("../assets/fonts/NotoSansMalayalam-Regular.ttf"),
@@ -12,6 +13,12 @@ function Intro({ navigation }) {
     Oleana: require("../assets/fonts/Oleana.ttf"),
   });
   useEffect(() => {
+    // mobileAds()
+    //   .initialize()
+    //   .then((adapterStatuses) => {
+    //     // Initialization complete!
+    //     console.log(adapterStatuses);
+    //   });
     setTimeout(() => {
       navigation.push("Home");
     }, 4000);
@@ -35,9 +42,6 @@ function Intro({ navigation }) {
         <Text
           style={globalStyles.introSub}
         >{`ഇതാ, കര്‍ത്താവിന്റെ ദാസി! നിന്റെ വാക്ക് എന്നില്‍ നിറവേറട്ടെ! (ലൂക്കാ 1:38)`}</Text>
-        <TouchableOpacity onPress={() => navigation.push("Home")}>
-          <Text>Hi</Text>
-        </TouchableOpacity>
       </View>
     );
   }
