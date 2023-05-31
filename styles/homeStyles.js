@@ -75,6 +75,7 @@ export default homeStyles = StyleSheet.create({
     flexGrow: 1,
     width: devWidth,
     marginTop: 8,
+
     position: "relative",
     alignItems: "center",
     flexDirection: "column",
@@ -87,6 +88,7 @@ export default homeStyles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     width: devWidth,
+    padding: 2,
   },
   daySub: {
     fontSize: RFValue(16),

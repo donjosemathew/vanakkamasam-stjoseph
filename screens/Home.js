@@ -15,7 +15,7 @@ import {
 } from "react-native";
 import { A } from "@expo/html-elements";
 import { SharedElement } from "react-navigation-shared-element";
-import { datatext } from "../data/data";
+import { datatext } from "../data/sacredHeart";
 import * as MailComposer from "expo-mail-composer";
 import globalStyles from "../styles/globalStyles";
 import homeStyles from "../styles/homeStyles";
@@ -24,27 +24,27 @@ import { RFValue } from "react-native-responsive-fontsize";
 function HomeScreen({ navigation }) {
   const [seleted, setSelected] = useState(0);
   const devWidth = Dimensions.get("window").width;
-  const [day, setDay] = useState(Array.from(Array(31).keys()));
+  const [day, setDay] = useState(Array.from(Array(30).keys()));
 
-  const days = ["SUN", "MON", "TUE", "WED", "THU", "SAT", "FRI"];
+  const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const getDay = (num) => {
     const d = new Date();
-    const date = new Date(`${d.getFullYear()}-04-${num}`);
-    let day = date.getDay(date);
-
+    const date = new Date(`${d.getFullYear()}-06-${num}`);
+    let day = date.getDay(date, date);
     return day;
   };
   const drawer = useRef(null);
   ///////////////////////
   ///////////Day
   const currentDate = new Date();
-  const month = currentDate.getMonth();
+  const month = currentDate.getMonth() + 1;
   const dayMonth = currentDate.getUTCDate();
 
   useEffect(() => {
     if (currentDate) {
-      if (month == 4) {
+      if (month == 6) {
         setSelected(dayMonth);
+        console.log(dayMonth);
       } else {
         setSelected(0);
       }
@@ -112,7 +112,7 @@ function HomeScreen({ navigation }) {
           <TouchableOpacity
             onPress={() =>
               MailComposer.composeAsync({
-                subject: "Vanakkamasam | Developer Contact",
+                subject: "Sacred Heart Vanakkamasam | Developer Contact",
                 recipients: ["donjosemathew.mail@gmail.com"],
               })
             }
@@ -130,7 +130,7 @@ function HomeScreen({ navigation }) {
           <TouchableOpacity
             onPress={() =>
               MailComposer.composeAsync({
-                subject: "Vanakkamasam | Error",
+                subject: "Sacred Heart Vanakkamasam | Error",
                 recipients: ["donjosemathew.mail@gmail.com"],
               })
             }
@@ -157,7 +157,7 @@ function HomeScreen({ navigation }) {
           }}
         >
           Version{"\n"}
-          7.0.0
+          4.0.0
         </Text>
       </View>
     );

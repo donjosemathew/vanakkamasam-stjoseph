@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "vanakkamasam",
-    "slug": "vanakkamasam",
-    "version": "7.0.0",
+    "name": "Thiruhrudaya Vanakkamasam",
+    "slug": "vanakkamasam-sacredheart",
+    "version": "4.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -10,15 +10,15 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.thunkable.android.niyarm03.ohgodmaryh"
+      "bundleIdentifier": "com.thunkable.android.niyarm03.THiruhrudayavanakka"
     },
     "android": {
-      "versionCode": 14,
+      "versionCode": 4,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.thunkable.android.niyarm03.ohgodmaryh"
+      "package": "com.thunkable.android.niyarm03.THiruhrudayavanakka"
     },
     "web": {
       "favicon": "./assets/favicon.png"
