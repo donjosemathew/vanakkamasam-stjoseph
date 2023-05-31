@@ -13,7 +13,7 @@
       "bundleIdentifier": "com.thunkable.android.niyarm03.THiruhrudayavanakka"
     },
     "android": {
-      "versionCode": 5,
+      "versionCode": 15,
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
