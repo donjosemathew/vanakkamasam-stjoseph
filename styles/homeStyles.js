@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
-import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { RFValue } from "react-native-responsive-fontsize";
 const devWidth = Dimensions.get("window").width;
 const devHeight = Dimensions.get("window").height;
 export default homeStyles = StyleSheet.create({
@@ -34,19 +34,19 @@ export default homeStyles = StyleSheet.create({
   },
   dayText: {
     fontSize: 20,
-    fontWeight: 500,
+    // fontWeight: 500,
     color: "rgba(39, 42, 52, .4)",
   },
   dayNum: {
     fontFamily: "Oleana",
     fontSize: 31,
-    fontWeight: 500,
+    // fontWeight: 500,
     color: "#272A34",
   },
   dayNumSun: {
     fontFamily: "Oleana",
     fontSize: 31,
-    fontWeight: 500,
+    // fontWeight: 500,
     color: "#E46168",
   },
   image: {
@@ -68,7 +68,7 @@ export default homeStyles = StyleSheet.create({
   },
   head: {
     fontFamily: "Oleana",
-    fontWeight: 600,
+    // fontWeight: 600,
     fontSize: 35,
   },
   holder2: {
@@ -95,17 +95,20 @@ export default homeStyles = StyleSheet.create({
     textAlign: "center",
     fontFamily: "Malayalam",
     color: "rgba(40, 42, 52, .5)",
+    paddingHorizontal: 2,
   },
   mlDate: {
-    fontSize: RFValue(20),
+    fontSize: RFValue(18),
     textAlign: "center",
     fontFamily: "MalayalamBold",
     color: "#282A34",
     width: "100%",
+    marginBottom: 10,
   },
   sukruthjapam: {
     fontSize: RFValue(16),
     marginHorizontal: 5,
+
     marginTop: 15,
     fontStyle: "italic",
     textAlign: "center",
@@ -129,6 +132,6 @@ export default homeStyles = StyleSheet.create({
     letterSpacing: 2,
     fontFamily: "Oleana",
     color: "#fff",
-    fontWeight: "400",
+    // fontWeight: 400,
   },
 });

@@ -1,18 +1,14 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import {
-  TouchableOpacity,
-  ImageBackground,
   Text,
   View,
   Image,
-  ScrollView,
   Animated,
   Dimensions,
   StatusBar as SB,
 } from "react-native";
 import BottomSheetComponent from "../Bottomsheet/BottomSheet";
-import { FAB } from "@rneui/themed";
 import globalStyles from "../styles/globalStyles";
 import homeStyles from "../styles/homeStyles";
 import prayerStyles from "../styles/prayerStyles";
@@ -170,7 +166,8 @@ function PrayerScreen({ route, navigation }) {
   });
   ///////////
   ////
-  const { day } = route.params;
+  let { day } = route.params;
+  day = day - 1;
   console.log(day);
   return (
     <View style={globalStyles.parent}>

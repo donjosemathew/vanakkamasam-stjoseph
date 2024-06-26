@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Button, Image, View, Text, TouchableOpacity } from "react-native";
+import { useEffect } from "react";
+import { Image, View, Text } from "react-native";
 import { useFonts } from "@use-expo/font";
 import globalStyles from "../styles/globalStyles";
 import { StatusBar } from "expo-status-bar";

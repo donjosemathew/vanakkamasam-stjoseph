@@ -44,17 +44,18 @@ function HomeScreen({ navigation }) {
     if (currentDate) {
       if (month == 6) {
         setSelected(dayMonth);
-        console.log(dayMonth);
+        console.log(dayMonth, month);
       } else {
-        setSelected(0);
+        setSelected(1);
       }
     }
   }, []);
   /////////////////
   ////
   const prayerPage = () => {
+    console.log(seleted);
     navigation.push("prayer", {
-      day: seleted,
+      day: seleted <= 0 ? 1 : seleted,
     });
   };
   /////
@@ -157,7 +158,7 @@ function HomeScreen({ navigation }) {
           }}
         >
           Version{"\n"}
-          4.0.0
+          5.0.0
         </Text>
       </View>
     );
@@ -205,15 +206,15 @@ function HomeScreen({ navigation }) {
           horizontal
         >
           {day.map((item, i) => {
-            const dayofWeek = getDay(item + 1);
+            const dayofWeek = getDay(item);
             return (
               <TouchableOpacity
                 onPress={() => {
-                  setSelected(item);
+                  setSelected(i + 1);
                 }}
                 key={item}
                 style={
-                  seleted == item ? homeStyles.daySelected : homeStyles.day
+                  seleted == item + 1 ? homeStyles.daySelected : homeStyles.day
                 }
               >
                 <Text style={homeStyles.dayText}>{days[dayofWeek]}</Text>
@@ -234,12 +235,22 @@ function HomeScreen({ navigation }) {
             resizeMode="cover"
             style={homeStyles.innerBG}
           >
-            <Text style={homeStyles.mlDate}>{datatext[seleted].daytext}</Text>
+            <Text style={homeStyles.mlDate}>
+              {seleted >= 1 && seleted <= 30
+                ? datatext[seleted - 1].daytext
+                : datatext[seleted].daytext}
+            </Text>
 
-            <Text style={homeStyles.daySub}>{datatext[seleted].subject}</Text>
+            <Text style={homeStyles.daySub}>
+              {seleted >= 1 && seleted <= 30
+                ? datatext[seleted - 1].subject
+                : datatext[seleted].subject}
+            </Text>
 
             <Text style={homeStyles.sukruthjapam}>
-              {datatext[seleted].sukruthajapam}
+              {seleted >= 1 && seleted <= 30
+                ? datatext[seleted - 1].sukruthajapam
+                : datatext[seleted].sukruthajapam}
             </Text>
             <TouchableOpacity onPress={prayerPage} style={homeStyles.readBtn}>
               <Text style={homeStyles.readBtnText}>Read Prayer </Text>
