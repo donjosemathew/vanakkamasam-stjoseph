@@ -3,7 +3,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { Icon } from "react-native-elements";
 import {
   TouchableOpacity,
-  ImageBackground,
   Text,
   View,
   DrawerLayoutAndroid,
@@ -15,21 +14,24 @@ import {
 } from "react-native";
 import { A } from "@expo/html-elements";
 import { SharedElement } from "react-navigation-shared-element";
-import { datatext } from "../data/sacredHeart";
+import { datatext } from "../data/stjospehdata";
 import * as MailComposer from "expo-mail-composer";
 import globalStyles from "../styles/globalStyles";
 import homeStyles from "../styles/homeStyles";
 import { RFValue } from "react-native-responsive-fontsize";
+import { getImageForToday } from "../data/imageGenerator";
 
 function HomeScreen({ navigation }) {
+  const img = getImageForToday();
+  console.log(navigation.params, "params");
   const [seleted, setSelected] = useState(0);
   const devWidth = Dimensions.get("window").width;
-  const [day, setDay] = useState(Array.from(Array(30).keys()));
+  const [day, setDay] = useState(Array.from(Array(31).keys()));
 
   const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const getDay = (num) => {
     const d = new Date();
-    const date = new Date(`${d.getFullYear()}-06-${num}`);
+    const date = new Date(`${d.getFullYear()}-03-${num}`);
     let day = date.getDay(date, date);
     return day;
   };
@@ -42,7 +44,7 @@ function HomeScreen({ navigation }) {
 
   useEffect(() => {
     if (currentDate) {
-      if (month == 6) {
+      if (month == 3) {
         setSelected(dayMonth);
         console.log(dayMonth, month);
       } else {
@@ -158,7 +160,7 @@ function HomeScreen({ navigation }) {
           }}
         >
           Version{"\n"}
-          5.0.0
+          3.0.0
         </Text>
       </View>
     );
@@ -170,6 +172,10 @@ function HomeScreen({ navigation }) {
       drawerPosition={"left"}
       renderNavigationView={drawerLayout}
     >
+      <Image
+        style={globalStyles.bg}
+        source={require("../assets/images/bg.jpeg")}
+      />
       <View style={globalStyles.parent}>
         <StatusBar backgroundColor="transparent" />
         <View style={homeStyles.topContainer}>
@@ -193,12 +199,9 @@ function HomeScreen({ navigation }) {
             size={40}
           />
         </View>
-        <Image style={globalStyles.bg} source={require("../assets/bg-2.png")} />
+
         <SharedElement id="mathav">
-          <Image
-            style={homeStyles.image}
-            source={require("../assets/images/mathav.jpg")}
-          />
+          <Image style={homeStyles.image} source={img} />
         </SharedElement>
         <ScrollView
           showsHorizontalScrollIndicator={false}
@@ -230,32 +233,26 @@ function HomeScreen({ navigation }) {
           })}
         </ScrollView>
         <View style={homeStyles.holder2}>
-          <ImageBackground
-            source={require("../assets/bg1.png")}
-            resizeMode="cover"
-            style={homeStyles.innerBG}
-          >
-            <Text style={homeStyles.mlDate}>
-              {seleted >= 1 && seleted <= 30
-                ? datatext[seleted - 1].daytext
-                : datatext[seleted].daytext}
-            </Text>
+          <Text style={homeStyles.mlDate}>
+            {seleted >= 1 && seleted <= 30
+              ? datatext[seleted - 1].daytext
+              : datatext[seleted].daytext}
+          </Text>
 
-            <Text style={homeStyles.daySub}>
-              {seleted >= 1 && seleted <= 30
-                ? datatext[seleted - 1].subject
-                : datatext[seleted].subject}
-            </Text>
+          <Text style={homeStyles.daySub}>
+            {seleted >= 1 && seleted <= 30
+              ? datatext[seleted - 1].subject
+              : datatext[seleted].subject}
+          </Text>
 
-            <Text style={homeStyles.sukruthjapam}>
-              {seleted >= 1 && seleted <= 30
-                ? datatext[seleted - 1].sukruthajapam
-                : datatext[seleted].sukruthajapam}
-            </Text>
-            <TouchableOpacity onPress={prayerPage} style={homeStyles.readBtn}>
-              <Text style={homeStyles.readBtnText}>Read Prayer </Text>
-            </TouchableOpacity>
-          </ImageBackground>
+          <Text style={homeStyles.sukruthjapam}>
+            {seleted >= 1 && seleted <= 30
+              ? datatext[seleted - 1].sukruthajapam
+              : datatext[seleted].sukruthajapam}
+          </Text>
+          <TouchableOpacity onPress={prayerPage} style={homeStyles.readBtn}>
+            <Text style={homeStyles.readBtnText}>Read Prayer </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </DrawerLayoutAndroid>

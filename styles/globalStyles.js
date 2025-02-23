@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import { StatusBar, Dimensions } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 const devHeight = Dimensions.get("window").height;
+const screenHeight = Dimensions.get("screen").height;
 const devWidth = Dimensions.get("window").width;
 export default styles = StyleSheet.create({
   container: {},
@@ -9,7 +10,7 @@ export default styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
-    backgroundColor: "white",
+
     paddingTop: StatusBar.currentHeight,
   },
   bg: {
@@ -17,7 +18,10 @@ export default styles = StyleSheet.create({
     top: 0,
     resizeMode: "cover",
     left: 0,
-    zIndex: -1,
+    zIndex: 0,
+    height: screenHeight,
+    width: devWidth,
+    opacity: 0.4,
   },
   scrollView: {
     flexGrow: 1,

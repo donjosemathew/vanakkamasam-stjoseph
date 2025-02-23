@@ -5,6 +5,7 @@ import globalStyles from "../styles/globalStyles";
 import { StatusBar } from "expo-status-bar";
 import homeStyles from "../styles/homeStyles";
 import { SharedElement } from "react-navigation-shared-element";
+import { getImageForToday } from "../data/imageGenerator";
 
 function Intro({ navigation }) {
   const [isLoaded] = useFonts({
@@ -12,13 +13,19 @@ function Intro({ navigation }) {
     MalayalamBold: require("../assets/fonts/NotoSansMalayalam-Bold.ttf"),
     Oleana: require("../assets/fonts/Oleana.ttf"),
   });
+
+  const getRandomInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
+
+  const getDayBasedInt = (day) => {
+    return (day % 6) + 1;
+  };
+
+  const img = getImageForToday();
   useEffect(() => {
-    // mobileAds()
-    //   .initialize()
-    //   .then((adapterStatuses) => {
-    //     // Initialization complete!
-    //     console.log(adapterStatuses);
-    //   });
     setTimeout(() => {
       navigation.push("Home");
     }, 4000);
@@ -27,12 +34,12 @@ function Intro({ navigation }) {
     return (
       <View style={[globalStyles.parent, globalStyles.intro]}>
         <StatusBar backgroundColor="transparent" />
-        <Image style={globalStyles.bg} source={require("../assets/bg-2.png")} />
+        <Image
+          style={globalStyles.bg}
+          source={require("../assets/images/bg2.jpeg")}
+        />
         <SharedElement id="mathav">
-          <Image
-            style={globalStyles.introImage}
-            source={require("../assets/images/mathav.jpg")}
-          />
+          <Image style={globalStyles.introImage} source={img} />
         </SharedElement>
         <SharedElement id="vtext">
           <Text style={[homeStyles.head, globalStyles.introtext]}>

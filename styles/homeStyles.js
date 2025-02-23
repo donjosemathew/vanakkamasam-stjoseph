@@ -24,7 +24,7 @@ export default homeStyles = StyleSheet.create({
   },
   daySelected: {
     width: devWidth * (1 / 5),
-    backgroundColor: "rgba(200, 197, 187, .4)",
+    backgroundColor: "rgba(235, 211, 178, .3)",
     margin: 2,
     height: 100,
     paddingHorizontal: 15,
@@ -56,7 +56,9 @@ export default homeStyles = StyleSheet.create({
     marginTop: 20,
     alignItems: "center",
     justifyContent: "center",
-    width: devWidth * 0.6,
+    width: devHeight * 0.3,
+    borderWidth: 4,
+    borderColor: "rgba(235, 211, 178, .5)",
   },
   topContainer: {
     paddingHorizontal: 20,
@@ -65,11 +67,13 @@ export default homeStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     width: "100%",
+    zIndex: 2,
   },
   head: {
     fontFamily: "Oleana",
     // fontWeight: 600,
     fontSize: 35,
+    zIndex: 2,
   },
   holder2: {
     flexGrow: 1,
@@ -89,6 +93,7 @@ export default homeStyles = StyleSheet.create({
     justifyContent: "center",
     width: devWidth,
     padding: 2,
+    opacity: 0.2,
   },
   daySub: {
     fontSize: RFValue(16),
@@ -124,7 +129,7 @@ export default homeStyles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 1000,
 
-    backgroundColor: "#282A34",
+    backgroundColor: "#4f4537",
     marginTop: 14,
   },
   readBtnText: {
